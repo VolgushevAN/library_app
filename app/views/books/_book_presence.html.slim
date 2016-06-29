@@ -1,0 +1,9 @@
+.row
+  .col-md-4
+    = book_presence.library.name
+  .col-md-4
+    = book_presence.library.address
+  .col-md-3.text-center
+    = book_presence.availabe_count
+  .col-md-1.text-center
+    = link_to 'Reserve', new_reservation_path(book_presence_id: book_presence.id)

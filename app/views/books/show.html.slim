@@ -1,0 +1,31 @@
+- @page_header = @book.title
+.row.book-show
+  .col-md-4.picture
+    = image_tag @book.picture.url(:large)
+  .col-md-8
+    .row
+      .col-md-12
+        | Author: 
+        span.author
+          = @book.author
+    .row
+      .col-md-12
+        p.description
+          = @book.description
+    .row
+      .col-md-12
+        - book_presences = @book.book_presences.available
+        - if book_presences.present?
+          .row.head
+            .col-md-4
+              | Library name
+            .col-md-4
+              | Address
+            .col-md-3.text-center
+              | Available count
+            .col-md-1
+          = render partial: 'book_presence', collection: book_presences
+        - else
+          .text-center
+            i
+              | No available books in libraries :(

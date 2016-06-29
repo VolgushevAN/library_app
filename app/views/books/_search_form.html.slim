@@ -1,0 +1,5 @@
+= search_form_for @q do |f|
+  .input-group
+    = f.search_field :title_or_description_or_author_cont_any, class: 'form-control', placeholder: 'Something to search'
+    span.input-group-btn
+      = f.submit 'Search', class: 'btn btn-default'

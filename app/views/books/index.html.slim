@@ -1,0 +1,7 @@
+- @page_header = 'Books'
+.row
+  .col-md-12
+    = render partial: 'search_form'
+.row
+  .col-md-12
+    = render partial: 'book_line', collection: @books

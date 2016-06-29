@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  timeout: 5000
+  host: localhost
+  user: postgres
+  password: qwer1234
+  encoding: unicode
+
+
+development:
+  <<: *default
+  database: library_app-development
+
+test:
+  <<: *default
+  database: library_app-test

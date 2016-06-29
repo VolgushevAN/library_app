@@ -1,0 +1,40 @@
+- book_line = reservation.book_presence.book
+- library = reservation.book_presence.library
+
+.row.book-line
+  .col-md-1
+    .row
+      .col-md-12
+        = link_to book_path(book_line) do
+          = image_tag book_line.picture.url(:thumb), class: 'picture'
+    .row
+      .col-md-12.text-center
+        = book_line.year   
+  .col-md-9
+    .row
+      .col-md-12
+        h4.title= link_to book_line.title, book_path(book_line)
+    .row
+      .col-md-12.author
+        | Author: 
+        = book_line.author
+    .row
+      .col-md-12
+        = book_line.description
+  .col-md-2
+    .row
+      .col-md-12
+        = reservation.state.humanize
+    .row
+      .col-md-12
+        = library.name
+    .row
+      .col-md-12
+        = library.address
+    .row
+      .col-md-12
+        = l reservation.date.to_date, format: :long if reservation.date
+    - if reservation.reserved?
+      .row
+        .col-md-12
+          = link_to 'Cancel', reservation_path(reservation), method: :delete, data: { confirm: 'Are you certain you want to cancel this?' }
